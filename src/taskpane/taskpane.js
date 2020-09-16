@@ -15,7 +15,8 @@ Office.onReady(info => {
     document.getElementById("sideload-msg").style.display = "none";
     document.getElementById("app-body").style.display = "flex";
     document.getElementById("run").onclick = run;
-    document.getElementById("mySubmit").onclick = mySubmit;
+    //document.getElementById("mySubmit").onclick = mySubmit;
+    document.getElementById("my-form").onsubmit = mySubmit;
   }
 });
 
@@ -25,30 +26,40 @@ export async function run() {
    */
   // Get a reference to the current message
   var item = Office.context.mailbox.item;
-
   // Write message property value to the task pane
   document.getElementById("item-subject").innerHTML = "<b>Subject:</b> <br/>" + item.subject;
   
+  // Generate attachment list
   var outputString = "";
 
-  if (item.attachments.length > 0) { 
-    for (var i = 0 ; i < item.attachments.length ; i++) { 
-      var attachment = item.attachments[i]; 
-      outputString += "<BR>" + i + ". Name: "; 
-      outputString += attachment.name; 
-      // outputString += "<BR>ID: " + attachment.id; 
-      outputString += "<BR>contentType: " + attachment.contentType; 
-      outputString += "<BR>size: " + attachment.size; 
-      outputString += "<BR>attachmentType: " + attachment.attachmentType; 
-      outputString += "<BR>isInline: " + attachment.isInline; 
-    } 
+  if (item.attachments.length > 0) {
+      for (var i = 0 ; i < item.attachments.length ; i++) {
+          var attachment = item.attachments[i];
+
+          outputString += '<div class="container"><label>';
+          outputString += '<input type="radio" name="attachments" id="attachment' + i + '" class="card-input-element" value="' + attachment.id + '"/>';
+          outputString += '<div class="panel panel-default card-input form-check card"><div class="row"><img class="col-2" height="100" float-left" src="../../assets/icon-32.png"  alt=""/><div class="col-10">';
+          outputString += '<h5 class="card-title">' + attachment.name + '</h5>';
+          outputString += '<h6 class="card-subtitle mb-2 text-muted">' + attachment.contentType + ' ' + attachment.size + '</h6>';
+          outputString += '<p class="card-text">Could add some additional descriptive text somehow........ from parser?</p>';
+          outputString += '</div></div></div></label></div>';
+      }
   }
 
-  document.getElementById("test-output").innerHTML = outputString;
+  outputString += '<div class="container"><label>';
+  outputString += '<input type="radio" name="attachments" id="html" class="card-input-element" value="item"/>';
+  outputString += '<div class="panel panel-default card-input form-check card"><div class="row"><img src="../../assets/icon-32.png" class="col-2" alt=""/><div class="col-10">';
+  outputString += '<h5 class="card-title">HTML Message Body</h5>';
+  outputString += '<h6 class="card-subtitle mb-2 text-muted">undetermined size</h6>';
+  outputString += '<p class="card-text">Could add some additional descriptive text somehow........ from parser?</p>';
+  outputString += '</div></div></div></label></div>';
+
+  document.getElementById("msg-attachments").innerHTML = outputString;
 
 }
 
-export async function mySubmit() {
+export async function mySubmit(event) {
+  event.preventDefault();
   var output ="";
 
   output += document.getElementById("company-name").value.toUpperCase() + "-";
