@@ -60,13 +60,51 @@ export async function run() {
 
 export async function mySubmit(event) {
   event.preventDefault();
+  var form = document.getElementById("my-form");
+  var attachments = form.elements[attachments];
   var output ="";
+  var attachmentId = '';
+  var oldname = '';
 
   output += document.getElementById("company-name").value.toUpperCase() + "-";
   output += document.getElementById("product-name").value.toUpperCase() + "-";
   output += document.getElementById("date").value.replace(/-/g, '');
   output += document.getElementById("invoice-num").value.toUpperCase(); 
 
+  // Get the selected attachment ID
+  for (var i = 0; i < attachments.length; i++) {
+    if (attachments[i].checked) {
+      attachmentId = attachments[i].value;
+      oldname = attachments[i].querySelector('.card-title').innerHTML;
+      i = attachments.length;
+    }
+  }
+
+  // Get a reference to the current message
+  var item = Office.context.mailbox.item;
+
+  if (attachmentId != 'html')
+    item.getAttachmentContentAsync(attachmentId, {asyncContext: {item: item, filename: output, oldId: oldId}}, fileAttachment);
+  else
+    fileHTMLAttachment(item);
 
   document.getElementById("test-output").innerHTML = output;
+}
+
+function fileAttachment (attachment) {
+  attachment.asyncContext.item.addFileAttachmentFromBase64Async(attachment.content, attachment.asyncContext.filename, 
+    { 
+      asyncContext: 
+      { 
+        item: attachment.asyncContext.item, 
+        oldId: attachment.asyncContext.oldId
+      }
+    }, function (result) {
+      attachment.asyncContext.item.removeAttachmentAsync(result.asyncContext.oldId);
+      run();
+  });
+}
+
+function fileHTMLAttachment (item) {
+  console.log("Not yet built.");
 }
