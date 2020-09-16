@@ -32,7 +32,7 @@ export async function run() {
   var outputString = "";
 
   if (item.attachments.length > 0) {
-      for (i = 0 ; i < item.attachments.length ; i++) {
+      for (var i = 0 ; i < item.attachments.length ; i++) {
           var attachment = item.attachments[i];
 
           outputString += '<div class="container"><label>';
@@ -44,6 +44,14 @@ export async function run() {
           outputString += '</div></label></div></div>';
       }
   }
+
+  outputString += '<div class="container"><label>';
+  outputString += '<input type="radio" name="attachments" id="html" class="card-input-element" value="item"/>';
+  outputString += '<div class="panel panel-default card-input form-check card"><img src="../../assets/icon-32.png" class="col-2" alt=""/><div class="col-10">';
+  outputString += '<h5 class="card-title">HTML Message Body</h5>';
+  outputString += '<h6 class="card-subtitle mb-2 text-muted">undetermined size</h6>';
+  outputString += '<p class="card-text">Could add some additional descriptive text somehow........ from parser?</p>';
+  outputString += '</div></label></div></div>';
 
   document.getElementById("msg-attachments").innerHTML = outputString;
 }
