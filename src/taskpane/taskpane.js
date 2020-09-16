@@ -54,4 +54,9 @@ export async function run() {
   outputString += '</div></label></div></div>';
 
   document.getElementById("msg-attachments").innerHTML = outputString;
+
+  attachment.name = result;
+  // attach to new email....
+  // send new email....
+  // send json body with a post req to http triggered flow
 }
