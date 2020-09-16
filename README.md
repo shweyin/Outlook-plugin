@@ -1,3 +1,8 @@
+# How to run
+1.clone the repo and install node modules (npm i)
+2. run the server with npm run dev-server
+
+
 # Office-Addin-TaskPane-JS
 
 This repository contains the source code used by the [Yo Office generator](https://github.com/OfficeDev/generator-office) when you create a new Office Add-in that appears in the task pane. You can also use this repository as a sample to base your own project from if you choose not to use the generator. 
