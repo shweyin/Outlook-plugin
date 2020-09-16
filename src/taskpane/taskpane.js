@@ -38,7 +38,7 @@ export async function run() {
 
           outputString += '<div class="container"><label>';
           outputString += '<input type="radio" name="attachments" id="attachment' + i + '" class="card-input-element" value="' + attachment.id + '"/>';
-          outputString += '<div class="panel panel-default card-input form-check card"><div class="row"><img class="col-2" height="100" float-left" src="../../assets/icon-32.png"  alt=""/><div class="col-10">';
+          outputString += '<div class="panel panel-default card-input form-check card" id="msgCont"><div class="row"><img class="col-2" width="50" height="50" float-left" src="../../assets/icon-32.png"  alt=""/><div class="col-10">';
           outputString += '<h5 class="card-title">' + attachment.name + '</h5>';
           outputString += '<h6 class="card-subtitle mb-2 text-muted">' + attachment.contentType + ' ' + attachment.size + '</h6>';
           outputString += '<p class="card-text">Could add some additional descriptive text somehow........ from parser?</p>';
@@ -48,7 +48,7 @@ export async function run() {
 
   outputString += '<div class="container"><label>';
   outputString += '<input type="radio" name="attachments" id="html" class="card-input-element" value="item"/>';
-  outputString += '<div class="panel panel-default card-input form-check card"><div class="row"><img src="../../assets/icon-32.png" class="col-2" alt=""/><div class="col-10">';
+  outputString += '<div class="panel panel-default card-input form-check card" id="msgCont"><div class="row"><img src="../../assets/icon-32.png" class="col-2" width="50" height="50" alt=""/><div class="col-10">';
   outputString += '<h5 class="card-title">HTML Message Body</h5>';
   outputString += '<h6 class="card-subtitle mb-2 text-muted">undetermined size</h6>';
   outputString += '<p class="card-text">Could add some additional descriptive text somehow........ from parser?</p>';
@@ -65,7 +65,7 @@ export async function mySubmit(event) {
   output += document.getElementById("company-name").value.toUpperCase() + "-";
   output += document.getElementById("product-name").value.toUpperCase() + "-";
   output += document.getElementById("date").value.replace(/-/g, '');
-  output += document.getElementById("invoice-num").value.toUpperCase() + "-"; 
+  output += document.getElementById("invoice-num").value.toUpperCase(); 
 
 
   document.getElementById("test-output").innerHTML = output;

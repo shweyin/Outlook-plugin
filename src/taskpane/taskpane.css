@@ -104,3 +104,7 @@ label {
 .card-input-element:checked + .card-input {
      box-shadow: 0 0 1px 1px #24215e;
  }
+
+ #msgCont {
+     background-color: whitesmoke;
+ }
