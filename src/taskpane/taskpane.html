@@ -10,6 +10,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Contoso Task Pane Add-in</title>
 
+    <!-- bootstrap cdn -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+
     <!-- Office JavaScript API -->
     <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js"></script>
 
@@ -29,10 +34,47 @@
         <h2 class="ms-font-xl">Please sideload your add-in to see app body.</h2>
     </section>
     <main id="app-body" class="ms-welcome__main" style="display: none;">
-        <h2 class="ms-font-xl"> Discover what Office Add-ins can do for you today! </h2>
+
+        <form>
+            <div class="form-group row">
+                <label for="company-name" class="col-2 col-form-label" >Company</label>
+                <div class="col-12">
+                  <input class="form-control" type="text" id="company-name">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="product-name" class="col-2 col-form-label">Product</label>
+                <div class="col-12">
+                  <input class="form-control" type="text" id="product-name">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="date" class="col-2 col-form-label">Date</label>
+                <div class="col-12">
+                  <input class="form-control" type="date" id="date">
+                </div>
+            </div>  
+            <div class="form-group row">
+                <label for="product-name" class="col-2 col-form-label">Invoice&nbsp;Number</label>
+                <div class="col-12">
+                  <input class="form-control" type="text" id="invoice-num">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="product-name" class="col-2 col-form-label">File&nbsp;Location</label>
+                <div class="col-12">
+                  <input class="form-control" type="text" id="invoice-num">
+                </div>
+            </div>                  
+        </form>
+        <button id="mySubmit" class="btn btn-primary">Save</button>
+          
         <p><label id="item-subject"></label></p>
         <div role="button" id="run" class="ms-welcome__action ms-Button ms-Button--hero ms-font-xl">
             <span class="ms-Button-label">Run</span>
+        </div>
+        <div id="test-output">
+
         </div>
     </main>
 </body>
