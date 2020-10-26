@@ -78,3 +78,33 @@
 b {
     font-weight: bold;
 }
+
+/**
+  Attachment Cards
+**/
+
+label {
+    width: 100%;
+}
+
+.card-input-element {
+    display: none;
+}
+
+.card-input {
+    margin: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.card-input:hover {
+    cursor: pointer;
+}
+
+.card-input-element:checked + .card-input {
+     box-shadow: 0 0 1px 1px #24215e;
+ }
+
+ #msgCont {
+     background-color: whitesmoke;
+ }
